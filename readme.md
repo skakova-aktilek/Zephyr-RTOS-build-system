@@ -55,3 +55,18 @@ west flash — flashes the built firmware to the board.
 -d build — flashes the firmware from the build directory.
 
 ![1789079477561](image/readme/1789079477561.png)
+
+#### 4.1 Kconfig Implementation Details
+
+**What are the levels of Log statements?**
+The four main log levels are ERR, WRN, ING and DBG.
+
+**What is the difference between `prj.conf` and `menuconfig`?**
+`prj.conf` stores the application’s requested Kconfig settings, while `menuconfig` provides an interactive interface to view and modify Kconfig options.
+
+**How do you check that the symbols in `prj.conf` are set after building? Why?**
+Check the generated `.config` file in the build directory, for example `build/blinky/zephyr/.config`. It contains the final resolved Kconfig values after dependencies and board defaults are applied.
+
+For this build, `CONFIG_LOG` was disabled:
+
+CONFIG_LOG is not set
