@@ -6,11 +6,9 @@
 
 **GitHub Repository URL: [skakova-aktilek/Zephyr-RTOS-build-system](https://github.com/skakova-aktilek/Zephyr-RTOS-build-system)**
 
-
 #### 1. Hello (Vanilla) Zephyr
 
 (1.1)  f26_lab0_1.1_skakova   Video is submitted
-
 
 #### 2. Hello (Nordic) Zephyr
 
@@ -20,7 +18,7 @@
 
 #### 3. Building with West
 
-**(3.1)** 
+**(3.1)**
 
 ***Why does Zephyr wrap CMake with West?***
 
@@ -30,27 +28,27 @@ West gives Zephyr a simpler interface for building, flashing, debugging, and man
 
 west init — initializes a West workspace.
 
-west update — downloads/updates projects from the manifest. 
+west update — downloads/updates projects from the manifest.
 
-west build — configures and builds a Zephyr application. 
+west build — configures and builds a Zephyr application.
 
 west flash — flashes the built firmware to the board.
 
-**Build command arguments** 
+**Build command arguments**
 
---build-dir build — uses build as the build directory. 
+--build-dir build — uses build as the build directory.
 
 . — uses the current folder as the application directory.
 
- --pristine — performs a clean build. 
+ --pristine — performs a clean build.
 
---board nrf7002dk/nrf5340/cpuapp/ns — selects the nRF7002 DK non-secure application core. 
+--board nrf7002dk/nrf5340/cpuapp/ns — selects the nRF7002 DK non-secure application core.
 
---sysbuild — enables Sysbuild. 
+--sysbuild — enables Sysbuild.
 
--DBOARD_ROOT=. — adds the current directory as a board search path. 
+-DBOARD_ROOT=. — adds the current directory as a board search path.
 
-**Flash command** 
+**Flash command**
 
 -d build — flashes the firmware from the build directory.
 
@@ -70,3 +68,11 @@ Check the generated `.config` file in the build directory, for example `build/bl
 For this build, `CONFIG_LOG` was disabled:
 
 #CONFIG_LOG is not set
+
+
+
+#### 5. Device Tree (DT)
+
+(5.1) Created a board overlay with the custom alias led5180, mapped to physical LED2. The application uses this alias to toggle LED2 every two seconds. The flash partition layout was also corrected so the application starts successfully.
+
+(5.2) Configured Button 1 as a GPIO input and polled its state every 10 ms. Each press toggles LED2, with 30 ms debouncing to prevent multiple toggles from a single press. Holding the button does not repeatedly toggle the LED.
