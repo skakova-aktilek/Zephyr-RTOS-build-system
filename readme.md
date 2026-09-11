@@ -59,7 +59,7 @@ west flash — flashes the built firmware to the board.
 #### 4.1 Kconfig Implementation Details
 
 **What are the levels of Log statements?**
-The four main log levels are ERR, WRN, ING and DBG.
+The four main log levels are ERR, WRN, INF and DBG.
 
 **What is the difference between `prj.conf` and `menuconfig`?**
 `prj.conf` stores the application’s requested Kconfig settings, while `menuconfig` provides an interactive interface to view and modify Kconfig options.
@@ -69,4 +69,4 @@ Check the generated `.config` file in the build directory, for example `build/bl
 
 For this build, `CONFIG_LOG` was disabled:
 
-CONFIG_LOG is not set
+#CONFIG_LOG is not set
