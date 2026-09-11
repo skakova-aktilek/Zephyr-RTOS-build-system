@@ -70,9 +70,12 @@ For this build, `CONFIG_LOG` was disabled:
 #CONFIG_LOG is not set
 
 
-
 #### 5. Device Tree (DT)
 
 (5.1) Created a board overlay with the custom alias led5180, mapped to physical LED2. The application uses this alias to toggle LED2 every two seconds. The flash partition layout was also corrected so the application starts successfully.
 
 (5.2) Configured Button 1 as a GPIO input and polled its state every 10 ms. Each press toggles LED2, with 30 ms debouncing to prevent multiple toggles from a single press. Holding the button does not repeatedly toggle the LED.
+
+(5.3) Created the custom alias button5180 for Button 1 in the board overlay and accessed it using DT_ALIAS(button5180) in main.c to control LED2.
+
+An overlay allows application-specific hardware configuration without modifying the board’s original DTS file in the SDK. It keeps changes within the project, avoids affecting other applications, and makes the configuration easier to share, version-control, and maintain across SDK updates.
