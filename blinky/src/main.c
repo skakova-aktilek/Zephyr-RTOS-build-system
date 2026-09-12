@@ -3,6 +3,8 @@
 
 #ifdef CONFIG_SUM_PRINT
 #include "sum_printk.h"
+#elif defined(CONFIG_SUM_LOG)
+#include "sum_log.h"
 #endif
 
 int main(void)
@@ -12,9 +14,11 @@ int main(void)
 
 #ifdef CONFIG_SUM_PRINT
 	int result = sum_printk(3, 5);
+#elif defined(CONFIG_SUM_LOG)
+	int result = sum_log(3, 5);
+#endif
 
 	printk("Returned result: %d\n", result);
-#endif
 
 	return 0;
 }

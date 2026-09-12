@@ -2,6 +2,15 @@ mainmenu "Lab 0 application"
 
 source "Kconfig.zephyr"
 
+choice SUM_IMPLEMENTATION
+	prompt "Sum output implementation"
+	default SUM_PRINT
+
 config SUM_PRINT
-	bool "Build the printk sum implementation"
-	default y
+	bool "Use printk"
+
+config SUM_LOG
+	bool "Use the Zephyr logger"
+	depends on LOG
+
+endchoice

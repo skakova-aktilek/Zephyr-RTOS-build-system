@@ -86,3 +86,7 @@ An overlay allows application-specific hardware configuration without modifying 
 **CONFIG_SUM_PRINT=y**
 
 ![1789235829064](image/readme/1789235829064.png)
+
+**CONFIG_SUM_LOG=y**
+
+![1789236988728](image/readme/1789236988728.png)
