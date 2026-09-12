@@ -115,3 +115,9 @@ An overlay allows application-specific hardware configuration without modifying 
 I read the BME280 temperature over I2C using direct register access and applied the sensor’s calibration values. The temperature is printed through Zephyr’s logging system every two seconds
 
 ![1789242018835](image/readme/1789242018835.png)
+
+(8.2)
+
+Ztest ran in QEMU with a mocked I2C sensor to verify the device-tree configuration, temperature conversion, and error handling. All 10 tests passed
+
+![1789242529363](image/readme/1789242529363.png)
