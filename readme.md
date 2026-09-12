@@ -90,3 +90,5 @@ An overlay allows application-specific hardware configuration without modifying 
 **CONFIG_SUM_LOG=y**
 
 ![1789236988728](image/readme/1789236988728.png)
+
+(6.2) f26_lab0_6.2_skakova video was submitted
