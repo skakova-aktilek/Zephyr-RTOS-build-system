@@ -91,4 +91,10 @@ An overlay allows application-specific hardware configuration without modifying 
 
 ![1789236988728](image/readme/1789236988728.png)
 
-(6.2) f26_lab0_6.2_skakova video was submitted
+(6.2) **f26_lab0_6.2_skakova video was submitted**
+
+(6.3) Committed and pushed the completed printk and logger implementations, including the Kconfig selection and CMake configuration, in the “6.1 Printk() and 6.1 Logger” commits.
+
+* **printk vs. Logger:** `printk()` provides simple, blocking console output. The logger supports severity levels, filtering, timestamps, and deferred processing.
+* **Why source Kconfig.zephyr?** It includes Zephyr’s configuration options so the application can configure OS features and drivers.
+* **Why use deferred logging?** It queues messages for later processing, reducing the time application tasks spend producing output.
