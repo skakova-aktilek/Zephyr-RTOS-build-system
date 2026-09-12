@@ -1,0 +1,7 @@
+mainmenu "Lab 0 application"
+
+source "Kconfig.zephyr"
+
+config SUM_PRINT
+	bool "Build the printk sum implementation"
+	default y
