@@ -98,3 +98,9 @@ An overlay allows application-specific hardware configuration without modifying 
 * **printk vs. Logger:** `printk()` provides simple, blocking console output. The logger supports severity levels, filtering, timestamps, and deferred processing.
 * **Why source Kconfig.zephyr?** It includes Zephyr’s configuration options so the application can configure OS features and drivers.
 * **Why use deferred logging?** It queues messages for later processing, reducing the time application tasks spend producing output.
+
+#### 7. Ztest for Unit Testing
+
+Ztest results in QEMU: all three sum-function test cases passed
+
+![1789239168959](image/readme/1789239168959.png)

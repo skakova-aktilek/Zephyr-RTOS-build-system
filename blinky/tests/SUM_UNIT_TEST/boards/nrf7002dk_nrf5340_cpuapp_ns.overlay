@@ -1,0 +1,2 @@
+/* Reuse the application's bootable flash layout for optional hardware tests. */
+#include "../../../boards/nrf7002dk_nrf5340_cpuapp_ns.overlay"
