@@ -101,6 +101,8 @@ An overlay allows application-specific hardware configuration without modifying 
 
 #### 7. Ztest for Unit Testing
 
-Ztest results in QEMU: all three sum-function test cases passed
+(7.1) Commit and pushed updated Zephyr application in "7. Ztest" commit
+
+(7.2) Ztest results in QEMU: all three sum-function test cases passed
 
 ![1789239168959](image/readme/1789239168959.png)
