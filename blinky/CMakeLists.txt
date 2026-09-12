@@ -5,6 +5,8 @@ find_package(Zephyr REQUIRED HINTS $ENV{ZEPHYR_BASE})
 project(blinky)
 
 target_sources(app PRIVATE src/main.c)
+target_sources(app PRIVATE bme280_raw/bme280_raw.c)
+target_include_directories(app PRIVATE bme280_raw)
 
 if(CONFIG_SUM_PRINT)
     target_sources(app PRIVATE sum_printk/sum_printk.c)

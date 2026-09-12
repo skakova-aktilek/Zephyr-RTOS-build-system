@@ -1,24 +1,43 @@
 #include <zephyr/kernel.h>
-#include <zephyr/sys/printk.h>
+#include <zephyr/logging/log.h>
+#include "bme280_raw.h"
 
-#ifdef CONFIG_SUM_PRINT
-#include "sum_printk.h"
-#elif defined(CONFIG_SUM_LOG)
-#include "sum_log.h"
-#endif
+LOG_MODULE_REGISTER(temperature_app, LOG_LEVEL_INF);
+
+#define SENSOR_NODE DT_NODELABEL(bme5180)
+BUILD_ASSERT(DT_NODE_HAS_STATUS(SENSOR_NODE, okay), "Enable the BME280 node");
+BUILD_ASSERT(DT_ON_BUS(SENSOR_NODE, i2c), "BME280 must be on an I2C bus");
+
+static struct bme280_raw sensor = {
+	.bus = I2C_DT_SPEC_GET(SENSOR_NODE),
+};
 
 int main(void)
 {
-	/* Give the serial terminal time to connect after reset. */
 	k_sleep(K_SECONDS(2));
+	LOG_INF("BME280: bus=%s address=0x%02x", sensor.bus.bus->name, sensor.bus.addr);
 
-#ifdef CONFIG_SUM_PRINT
-	int result = sum_printk(3, 5);
-#elif defined(CONFIG_SUM_LOG)
-	int result = sum_log(3, 5);
-#endif
+	int ret = bme280_raw_init(&sensor);
 
-	printk("Returned result: %d\n", result);
+	if (ret < 0) {
+		LOG_ERR("BME280 initialization failed (%d). Check power, wiring and I2C address.", ret);
+		return 0;
+	}
+	LOG_INF("BME280 detected; factory temperature calibration loaded");
 
+	while (1) {
+		int32_t temperature;
+
+		ret = bme280_raw_read_temperature(&sensor, &temperature);
+		if (ret < 0) {
+			LOG_ERR("Temperature read failed (%d)", ret);
+		} else {
+			int32_t magnitude = temperature < 0 ? -temperature : temperature;
+
+			LOG_INF("Temperature: %s%d.%02d C", temperature < 0 ? "-" : "",
+				(int)(magnitude / 100), (int)(magnitude % 100));
+		}
+		k_sleep(K_SECONDS(2));
+	}
 	return 0;
 }

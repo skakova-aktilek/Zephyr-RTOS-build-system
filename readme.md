@@ -106,3 +106,12 @@ An overlay allows application-specific hardware configuration without modifying 
 (7.2) Ztest results in QEMU: all three sum-function test cases passed
 
 ![1789239168959](image/readme/1789239168959.png)
+
+
+#### 8. Adding a Peripheral (BME280)
+
+(8.1)
+
+I read the BME280 temperature over I2C using direct register access and applied the sensor’s calibration values. The temperature is printed through Zephyr’s logging system every two seconds
+
+![1789242018835](image/readme/1789242018835.png)

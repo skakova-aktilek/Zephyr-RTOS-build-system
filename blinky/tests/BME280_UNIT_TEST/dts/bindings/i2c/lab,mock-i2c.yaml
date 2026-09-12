@@ -1,0 +1,3 @@
+description: Test-only I2C controller backed by a register array
+compatible: "lab,mock-i2c"
+include: i2c-controller.yaml

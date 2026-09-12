@@ -1,0 +1,8 @@
+/* Shared by the real board and the laptop test's mock I2C bus. */
+&i2c1 {
+    bme5180: bme280@77 {
+        compatible = "i2c-device";
+        status = "okay";
+        reg = <0x77>;
+    };
+};
