@@ -107,6 +107,25 @@ An overlay allows application-specific hardware configuration without modifying 
 
 ![1789239168959](image/readme/1789239168959.png)
 
+**What do the configuration options do?**
+
+* `CONFIG_ZTEST=y` enables Zephyr’s unit testing framework.
+* `CONFIG_ZTEST_ASSERT_VERBOSE=2` enables detailed assertion output, including successful assertions.
+* `CONFIG_LOG=y` enables Zephyr’s logging system.
+
+**Where is main() in Ztest? How is it still running?**
+
+Zephyr’s Ztest framework supplies the main entry point, so the test application does not need its own `main()`. The framework discovers tests defined with `ZTEST()` and suites registered with `ZTEST_SUITE()`, runs them, and reports the results.
+
+**What is the difference between west twister and west build?**
+
+| Feature            | `west twister`                                                 | `west build`                                                          |
+| ------------------ | ---------------------------------------------------------------- | ----------------------------------------------------------------------- |
+| Purpose            | Discovers, builds, and runs tests.                               | Configures and builds an application, including a test application.     |
+| Test configuration | Reads `testcase.yaml`to select tests and platforms.            | Uses the application directory and specified board target.              |
+| Execution          | Can automatically run tests in QEMU or on configured hardware.   | Building alone does not run tests; a separate execution step is needed. |
+| Results            | Collects pass/fail results and generates reports.                | Reports build success or failure.                                       |
+| When to use        | Running test suites or testing multiple platforms automatically. | Building or debugging one test application for a specific board.        |
 
 #### 8. Adding a Peripheral (BME280)
 
